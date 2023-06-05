@@ -1,7 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
 import { Header } from "./Header";
-import { Button } from "./Button";
 import { Week } from "./Week";
 import { TimeTable } from "./TimeTable";
 
