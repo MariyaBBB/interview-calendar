@@ -9,9 +9,12 @@ const StyledWeek = styled.div`
     display: grid;
     grid-template-columns: repeat(7, auto);
     padding-top: 16px;
-    padding-left: 95px;
+    padding-left: 70px;
     font-size: 22px;
-    align-self: center;
+  
+    text-align: center;
+
+    
     
 @media (max-width: 700px) {
     padding-left: 45px; 
@@ -37,7 +40,7 @@ const StyledWrapper = styled.div`
     text-content:center;
     grid-column: 1/8; 
     display: grid;
-    grid-template-columns: 0.04fr 0.71fr 0.25fr ;
+    grid-template-columns: 0.15fr 0.7fr 0.15fr ;
     text-align: center;
 
 `
