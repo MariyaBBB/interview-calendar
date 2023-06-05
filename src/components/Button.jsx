@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button`
  color: red;
- font-size: 50px;
+ font-size: 55px;
+ bold: none;
  border: none;
  background: #FFFFFF;
- font-family: Arial;
+ font-weight: 300;
  cursor: pointer;
  justify-self: end;
 `
