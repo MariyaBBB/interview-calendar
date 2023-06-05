@@ -2,6 +2,8 @@ import React from "react";
 import styled from 'styled-components';
 import { Header } from "./Header";
 import { Button } from "./Button";
+import { Week } from "./Week";
+import { TimeTable } from "./TimeTable";
 
 const StyledCalendar = styled.div`
     font-family: Sans-Serif;
@@ -10,17 +12,20 @@ const StyledCalendar = styled.div`
     height:100px;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 500;
 
     @media (max-width: 740px) {
         width: 100%;
     }
-
 `
+
 
 export const Calendar = () => {
     return(
         <StyledCalendar> 
             <Header />
+            <Week />
+            <TimeTable />
         </StyledCalendar>
     )
 }
