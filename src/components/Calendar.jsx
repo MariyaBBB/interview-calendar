@@ -10,6 +10,11 @@ const StyledCalendar = styled.div`
     height:100px;
     margin-left: auto;
     margin-right: auto;
+
+    @media (max-width: 740px) {
+        width: 100%;
+    }
+
 `
 
 export const Calendar = () => {
