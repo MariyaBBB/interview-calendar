@@ -2,7 +2,6 @@ import React from "react";
 import styled from 'styled-components';
 import { Header } from "./Header";
 import { Week } from "./Week";
-import { TimeTable } from "./TimeTable";
 
 const StyledCalendar = styled.div`
     font-family: Sans-Serif;
@@ -24,7 +23,6 @@ export const Calendar = () => {
         <StyledCalendar> 
             <Header />
             <Week />
-            <TimeTable />
         </StyledCalendar>
     )
 }
