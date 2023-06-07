@@ -51,6 +51,28 @@ const StyledWrapper = styled.div`
 
 `
 
+const StyledDates = styled.span`
+    border-radius: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 6px;
+    align-content: center;
+    text-content:center;
+    place-items: center;
+`
+
+const CurrentDay = styled.span`
+    background: red;
+    color:white;
+    border-radius: 60px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 6px;
+    align-content: center;
+    text-content:center;
+    place-items: center;
+`
+
 
 
 const defaultProps = {
@@ -61,11 +83,17 @@ const defaultProps = {
 }
 
 export const Week = () => {
-    const [startDay, setStartDay] = useState(moment().startOf("month").startOf('week'))
+    const today = moment().add();
+    const [startDay, setStartDay] = useState(moment().startOf('week'))
     const [dates, setDates] = useState([]);
     const array =[];
     const day = startDay.clone();
-    console.log(arrayOfInterviewObject);
+    const isCurrentDay = (day) => {
+        return day === today.date() && today.month() === startDay.month();
+
+    }
+    console.log(today)
+
     useEffect(() => {
 
         while(array.length < 7) {
@@ -103,7 +131,13 @@ export const Week = () => {
         <>
         <StyledWeek> 
             {defaultProps.weekNames.map(name => <span className="week" key={name.id} >{name}</span>)} 
-            {dates.map(date  => <span className="dates" key={date.id}>{date}</span>)} 
+            {dates.map(date  => 
+                (isCurrentDay(date) ?
+                <CurrentDay className="dates" key={date.id}>{date}</CurrentDay> :
+                <StyledDates className="dates" key={date.id}>{date}</StyledDates> 
+                ))}
+            
+                
             <StyledWrapper>
                 <StyledButton onClick={prevWeek}>{'<'}</StyledButton>
                 <div>
