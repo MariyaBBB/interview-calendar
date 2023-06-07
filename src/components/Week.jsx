@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { TimeTable } from "./TimeTable";
 import moment from 'moment'; 
+import { arrayOfInterviewObject } from "../data/interviews";
 
 const StyledWeek = styled.div`
     height: 142px;
@@ -56,7 +57,7 @@ const defaultProps = {
     monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     weekNames: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
     dates: [],
-    time: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00']
+    time: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00']
 }
 
 export const Week = () => {
@@ -64,7 +65,7 @@ export const Week = () => {
     const [dates, setDates] = useState([]);
     const array =[];
     const day = startDay.clone();
-    
+    console.log(arrayOfInterviewObject);
     useEffect(() => {
 
         while(array.length < 7) {
