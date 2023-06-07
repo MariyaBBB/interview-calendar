@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import { Button } from "./Button";
+import moment from "moment";
 
 const StyledHeader = styled.div`
     display: grid;
@@ -20,12 +21,17 @@ const StyledTitle = styled.h1`
     font-size: 36px;
 `
 
-
+const createInterview = () => {
+    
+    let res = prompt('Enter event time: YYYY-MM-DD HH:mm:ss');
+    console.log(res);
+    console.log(Date.parse(res));
+}
 export const Header = (props) => {
     return(
         <StyledHeader {...props}> 
             <StyledTitle>Interview calendar</StyledTitle>
-            <Button >+</Button>
+            <Button onClick={createInterview} >+</Button>
         </StyledHeader>
     )
 }
