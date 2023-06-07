@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import { arrayOfInterviewObject } from "../data/interviews";
 
@@ -27,6 +27,7 @@ const StyledTime = styled.div`
 `
 
 const StyledObj = styled.div`
+    :hover {background: #B3B7FF;};
     border-right: 2px solid #ECECEC;
     border-bottom: 2px solid #ECECEC;
     margin-top: -20px;
@@ -34,18 +35,24 @@ const StyledObj = styled.div`
     border-top:none;
     width: 100%;
     height: 100%;   
+    
     ${props => props.$backgroundColor ? {background: '#EBECFF'}: '' };
+    
 `
 
 export const TimeTable = (props) => {
-    
-    console.log(props.time.time)
+    const check = (obj, i, index) => {
+        console.log(i, index)
+    } 
     return (
         <> 
             <StyledTimeTable {...props}>{props.time.time.map((t, index) => (
                 <>
                 <StyledTime>{t}</StyledTime>
-                <StyledInterview>{arrayOfInterviewObject[index].map(obj => <StyledObj $backgroundColor={obj.isInterview ? true : false}>{}</StyledObj>)}</StyledInterview>
+                <StyledInterview>{arrayOfInterviewObject[index].map((obj,i) => 
+                        <StyledObj $backgroundColor={obj.isInterview ? true : false}>{}
+                        </StyledObj>)}
+                </StyledInterview>
                 </>
                 ))}
             </StyledTimeTable>
