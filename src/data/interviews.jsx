@@ -16,7 +16,7 @@ export const arrayOfInterviewObject = [
     [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
     [{isInterview: false}, {isInterview: false}, {isInterview: true}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
     [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: true}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
+    [{isInterview: true}, {isInterview: false}, {isInterview: true}, {isInterview: false}, {isInterview: true}, {isInterview: false}, {isInterview: true}],
     [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
     [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
     [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
