@@ -27,7 +27,6 @@ const StyledTime = styled.div`
 `
 
 const StyledObj = styled.div`
-    :hover {background: #B3B7FF;};
     border-right: 2px solid #ECECEC;
     border-bottom: 2px solid #ECECEC;
     margin-top: -20px;
@@ -35,22 +34,26 @@ const StyledObj = styled.div`
     border-top:none;
     width: 100%;
     height: 100%;   
-    
+    cursor: pointer;
     ${props => props.$backgroundColor ? {background: '#EBECFF'}: '' };
-    
+    ${props => props.$isActive ? {background: '#B3B7FF'}: '' };
 `
 
 export const TimeTable = (props) => {
-    const check = (obj, i, index) => {
-        console.log(i, index)
+    const [active1, setActive1] = useState(null);
+    const [active2, setActive2] = useState(null);
+    const getElem = (i, j) => {
+        setActive1(i);
+        setActive2(j);
+        console.log(arrayOfInterviewObject[i][j])
     } 
     return (
         <> 
-            <StyledTimeTable {...props}>{props.time.time.map((t, index) => (
+            <StyledTimeTable {...props}>{props.time.time.map((t, i) => (
                 <>
                 <StyledTime>{t}</StyledTime>
-                <StyledInterview>{arrayOfInterviewObject[index].map((obj,i) => 
-                        <StyledObj $backgroundColor={obj.isInterview ? true : false}>{}
+                <StyledInterview>{arrayOfInterviewObject[i].map((obj,j) => 
+                        <StyledObj onClick={() => getElem(i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={obj.isInterview ? true : false}>{}
                         </StyledObj>)}
                 </StyledInterview>
                 </>
