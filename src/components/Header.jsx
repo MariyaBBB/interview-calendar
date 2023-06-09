@@ -25,7 +25,14 @@ const createInterview = () => {
     
     let res = prompt('Enter event time: YYYY-MM-DD HH:mm:ss');
     console.log(res);
-    console.log(Date.parse(res));
+    if(moment(res, "YYYY-MM-DD HH:mm:ss", true).isValid()) {
+        console.log(moment(res).hour());
+        console.log(moment(res).date());
+        console.log(moment(res).month());
+    } else {
+        alert("Fail");
+    }
+    
 }
 export const Header = (props) => {
     return(
