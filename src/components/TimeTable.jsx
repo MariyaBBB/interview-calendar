@@ -6,16 +6,21 @@ const StyledTimeTable = styled.div`
     height: auto;
     background: #FFFFFF;
     display: grid;
-    grid-template-columns: 70px 1fr;
+    grid-template-columns: 70px auto;
     color: #C0C0C0;
     overflow: hidden;
     font-size: 20px;
+    @media (max-width: 740px) {
+    padding-left: 0px; 
+    width: 100%;
+    grid-template-columns: auto 1fr;
+}
 `
 
 const StyledInterview = styled.div`
     grid-column: 2; 
     display: grid;
-    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(7, 1fr);
     text-align: center;
     place-items: center;
     border:none;
@@ -24,6 +29,10 @@ const StyledInterview = styled.div`
 const StyledTime = styled.div`
     padding-top: 28px;
     padding-left: 14px;
+    @media (max-width: 740px) {
+        padding-left: 4px;
+    
+    }
 `
 
 const StyledObj = styled.div`

@@ -16,13 +16,18 @@ const StyledWeek = styled.div`
     font-size: 22px; 
     text-align: center;    
     
-    @media (max-width: 700px) {
+    @media (max-width: 740px) {
     padding-left: 45px; 
-}
+    width: 100%;
+    font-size: 18px;
+    }
 
 .dates {
     font-size: 28px;
     font-weight:300;
+    @media (max-width: 740px) {
+        font-size: 20px;
+    }
 }
 
 .week {
@@ -48,13 +53,14 @@ const StyledWrapper = styled.div`
     grid-template-columns: 0.15fr 0.7fr 0.15fr ;
     text-align: center;
     place-items: center;
+    @media (max-width: 740px) {
+    width: 100%;
+
+}
 
 `
 
 const StyledDates = styled.span`
-    border-radius: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
     padding-top: 6px;
     align-content: center;
     text-content:center;
@@ -71,6 +77,13 @@ const CurrentDay = styled.span`
     align-content: center;
     text-content:center;
     place-items: center;
+    @media (max-width: 740px) {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 40px;
+    }
 `
 
 
