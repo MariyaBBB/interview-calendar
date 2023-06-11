@@ -1,30 +1,18 @@
 
 export const createNewArray = () => {
-    const arrayOfInterviewObject = [];
+    const arrayOfInterview = [];
     for(let i = 0; i < 12; i++) 
         for(let j=0; j<7; j++) {
-            arrayOfInterviewObject[i][j] = Object.create(null, {
-                isInterview: false
-            })
+            arrayOfInterview[i][j] = '';
         }
-    return arrayOfInterviewObject
+    return arrayOfInterview;
+}
+const array = new Array(7);
+for(let i = 0; i < 7; i++) {
+    array[i] = new Array(12);
 }
 
-export const arrayOfInterviewObject = [
-    [{isInterview: true}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: true}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: true}, {isInterview: false}, {isInterview: true}, {isInterview: false}, {isInterview: true}, {isInterview: false}, {isInterview: true}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-    [{isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}, {isInterview: false}],
-]
+export const arrayOfInterviews = array;
 
 
 

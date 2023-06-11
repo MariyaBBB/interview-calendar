@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import { arrayOfInterviewObject } from "../data/interviews";
+import { arrayOfInterviews } from "../data/interviews";
 
 const StyledTimeTable = styled.div`
     height: auto;
@@ -54,15 +54,16 @@ export const TimeTable = (props) => {
     const getElem = (i, j) => {
         setActive1(i);
         setActive2(j);
-        console.log(arrayOfInterviewObject[i][j])
+        console.log(arrayOfInterviews[i][j])
     } 
+    console.log(arrayOfInterviews);
     return (
         <> 
             <StyledTimeTable {...props}>{props.time.time.map((t, i) => (
                 <>
                 <StyledTime>{t}</StyledTime>
-                <StyledInterview>{arrayOfInterviewObject[i].map((obj,j) => 
-                        <StyledObj onClick={() => getElem(i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={obj.isInterview ? true : false}>{}
+                <StyledInterview>{arrayOfInterviews.map((el,j) => 
+                        <StyledObj onClick={() => getElem(i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={el[j] ? true : false}>{el[j]}
                         </StyledObj>)}
                 </StyledInterview>
                 </>

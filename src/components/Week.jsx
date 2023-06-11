@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { TimeTable } from "./TimeTable";
 import moment from 'moment'; 
-import { arrayOfInterviewObject } from "../data/interviews";
+import { arrayOfInterviews} from "../data/interviews";
 
 const StyledWeek = styled.div`
     height: 142px;
@@ -19,14 +19,12 @@ const StyledWeek = styled.div`
     @media (max-width: 740px) {
     padding-left: 45px; 
     width: 100%;
-    font-size: 18px;
     }
 
 .dates {
     font-size: 28px;
     font-weight:300;
     @media (max-width: 740px) {
-        font-size: 20px;
     }
 }
 
@@ -78,8 +76,8 @@ const CurrentDay = styled.span`
     text-content:center;
     place-items: center;
     @media (max-width: 740px) {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
         margin-left: auto;
         margin-right: auto;
         border-radius: 40px;
@@ -105,7 +103,7 @@ export const Week = () => {
         return day === today.date() && today.month() === startDay.month();
 
     }
-    console.log(today)
+    console.log(arrayOfInterviews)
 
     useEffect(() => {
 
