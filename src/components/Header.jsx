@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from 'styled-components';
 import { Button } from "./Button";
 import moment from "moment";
+import { AppContext, arrayOfInterviews} from "../data/interviews";
 
 const StyledHeader = styled.div`
     display: grid;
@@ -21,24 +22,27 @@ const StyledTitle = styled.h1`
     font-size: 36px;
 `
 
-const createInterview = () => {
-    
-    let res = prompt('Enter event time: YYYY-MM-DD HH:mm:ss');
-    console.log(res);
-    if(moment(res, "YYYY-MM-DD HH:mm:ss", true).isValid()) {
-        console.log(moment(res).hour());
-        console.log(moment(res).date());
-        console.log(moment(res).month());
-    } else {
-        alert("Fail");
-    }
-    
-}
+
 export const Header = (props) => {
+    const arrayOfInterviews = useContext(AppContext);
+    const createInterview = () => {
+    
+        let res = prompt('Enter event time: YYYY-MM-DD HH:mm:ss');
+        console.log(res);
+        if(moment(res, "YYYY-MM-DD HH:mm:ss", true).isValid()) { 
+            let i = moment(res).weekday();
+            let j = moment(res).hour() - 8;
+            arrayOfInterviews[i][j] = 'event';
+            console.log(arrayOfInterviews);
+    
+        } else {
+            alert("Fail");
+        }
+    }
     return(
         <StyledHeader {...props}> 
             <StyledTitle>Interview calendar</StyledTitle>
-            <Button onClick={createInterview} >+</Button>
+            <Button onClick={createInterview} $isVisible={true}>+</Button>
         </StyledHeader>
     )
 }
