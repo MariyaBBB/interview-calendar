@@ -23,7 +23,6 @@ const StyledInterview = styled.div`
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
     place-items: center;
-    border:none;
 `
 
 const StyledTime = styled.div`
@@ -31,13 +30,11 @@ const StyledTime = styled.div`
     padding-left: 14px;
     @media (max-width: 740px) {
         padding-left: 4px;
-    
     }
 `
 
-const StyledObj = styled.div`
-    border-right: 2px solid #ECECEC;
-    border-bottom: 2px solid #ECECEC;
+const StyledEvent = styled.div`
+    border: 2px solid #ECECEC;
     margin-top: -20px;
     border-left: none;
     border-top:none;
@@ -47,6 +44,7 @@ const StyledObj = styled.div`
     ${props => props.$backgroundColor ? {background: '#EBECFF'}: '' };
     ${props => props.$isActive ? {background: '#B3B7FF'}: '' };
 `
+
 
 export const TimeTable = (props) => {
     const [active1, setActive1] = useState(null);
@@ -63,13 +61,12 @@ export const TimeTable = (props) => {
                 <>
                 <StyledTime>{t}</StyledTime>
                 <StyledInterview>{arrayOfInterviews.map((el,j) => 
-                        <StyledObj onClick={() => getElem(i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={el[j] ? true : false}>{el[j]}
-                        </StyledObj>)}
+                        <StyledEvent onClick={() => getElem(i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={el[j] ? true : false}>{el[j]}
+                        </StyledEvent>)}
                 </StyledInterview>
                 </>
                 ))}
             </StyledTimeTable>
-            
         </>
     )
 }

@@ -71,7 +71,7 @@ const CurrentDay = styled.span`
     border-radius: 60px;
     margin-left: 25px;
     margin-right: 25px;
-    padding-top: 6px;
+    padding-top: 8px;
     align-content: center;
     text-content:center;
     place-items: center;
