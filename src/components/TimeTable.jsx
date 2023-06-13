@@ -73,11 +73,10 @@ export const TimeTable = (props) => {
     const getElem = (e, i, j) => {
         setActive1(i);
         setActive2(j);
-        console.log(e);
+        console.log(arrayOfInterviews[j][i])
     } 
     const rootEl = useRef(null);
     const arrayOfInterviews = useContext(AppContext);
-    console.log(arrayOfInterviews);
     useEffect(() => {
         const onClick = e => rootEl.current.contains(e.target) || 
         setActive1(null);
@@ -85,20 +84,23 @@ export const TimeTable = (props) => {
         document.addEventListener('click', onClick);
         return () => document.removeEventListener('click', onClick);
       }, []);
-
+    const isEvent = (i, j) => {
+        if(arrayOfInterviews[j][i]) return true;
+        else return false;
+    }
     return (
         <> 
             <StyledTimeTable ref={rootEl} {...props}>{props.time.time.map((t, i) => (
                 <>
                 <StyledTime key={[t, i]}>{t}</StyledTime>
-                <StyledInterview>{arrayOfInterviews.map((el, j) => 
-                        <StyledEvent onClick={(e) => getElem(e, i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={el[j] ? true : false}>{}
+                <StyledInterview arrayOfInterviews={arrayOfInterviews}>{arrayOfInterviews.map((el, j) => 
+                        <StyledEvent key={[j, i]} onClick={(e) => getElem(e, i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={isEvent(i, j)}>{}
                         </StyledEvent>)}
                 </StyledInterview>
                 </>
                 ))}
             </StyledTimeTable>
-            <StyledButtons><Button $medium $isVisible={true}>Today</Button> <Button $medium $isVisible={active1 && active2}>Delete</Button></StyledButtons>
+            <StyledButtons><Button $medium $isVisible={true}>Today</Button> <Button $medium $isVisible={active1 && isEvent(active1, active2)}>Delete</Button></StyledButtons>
         </>
     )
 }
