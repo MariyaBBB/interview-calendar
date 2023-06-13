@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import { arrayOfInterviews } from "../data/interviews";
 import { Button } from "./Button";
@@ -70,24 +70,24 @@ const StyledButtons = styled.div`
 export const TimeTable = (props) => {
     const [active1, setActive1] = useState(null);
     const [active2, setActive2] = useState(null);
-    const getElem = (i, j) => {
+    const getElem = (e, i, j) => {
         setActive1(i);
         setActive2(j);
+        console.log(e);
     } 
-    console.log(arrayOfInterviews);
     return (
         <> 
             <StyledTimeTable {...props}>{props.time.time.map((t, i) => (
                 <>
                 <StyledTime>{t}</StyledTime>
                 <StyledInterview>{arrayOfInterviews.map((el,j) => 
-                        <StyledEvent onClick={() => getElem(i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={el[j] ? true : false}>{el[j]}
+                        <StyledEvent onClick={(e) => getElem(e, i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={el[j] ? true : false}>{el[j]}
                         </StyledEvent>)}
                 </StyledInterview>
                 </>
                 ))}
             </StyledTimeTable>
-            <StyledButtons><Button $medium >Today</Button> <Button $medium >Delete</Button></StyledButtons>
+            <StyledButtons><Button $medium $isVisible={true}>Today</Button> <Button $medium $isVisible={active1 && active2}>Delete</Button></StyledButtons>
         </>
     )
 }
