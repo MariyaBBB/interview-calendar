@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
-import { arrayOfInterviews } from "../data/interviews";
 import { Button } from "./Button";
+import { AppContext } from "../data/interviews";
 
 const StyledTimeTable = styled.div`
     width: 740px;
@@ -76,7 +76,8 @@ export const TimeTable = (props) => {
         console.log(e);
     } 
     const rootEl = useRef(null);
-
+    const arrayOfInterviews = useContext(AppContext);
+    console.log(arrayOfInterviews);
     useEffect(() => {
         const onClick = e => rootEl.current.contains(e.target) || 
         setActive1(null);
@@ -89,9 +90,9 @@ export const TimeTable = (props) => {
         <> 
             <StyledTimeTable ref={rootEl} {...props}>{props.time.time.map((t, i) => (
                 <>
-                <StyledTime>{t}</StyledTime>
-                <StyledInterview>{arrayOfInterviews.map((el,j) => 
-                        <StyledEvent onClick={(e) => getElem(e, i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={el[j] ? true : false}>{el[j]}
+                <StyledTime key={[t, i]}>{t}</StyledTime>
+                <StyledInterview>{arrayOfInterviews.map((el, j) => 
+                        <StyledEvent onClick={(e) => getElem(e, i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={el[j] ? true : false}>{}
                         </StyledEvent>)}
                 </StyledInterview>
                 </>

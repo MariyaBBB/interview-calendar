@@ -1,3 +1,4 @@
+import { createContext } from "react";
 
 export const createNewArray = () => {
     const arrayOfInterview = [];
@@ -13,6 +14,8 @@ for(let i = 0; i < 7; i++) {
 }
 
 export const arrayOfInterviews = array;
+
+export const AppContext = createContext('no context');
 
 
 

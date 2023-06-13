@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { TimeTable } from "./TimeTable";
 import moment from 'moment'; 
-import { arrayOfInterviews} from "../data/interviews";
 
 const StyledWeek = styled.div`
     height: 142px;
@@ -103,7 +102,6 @@ export const Week = () => {
         return day === today.date() && today.month() === startDay.month();
 
     }
-    console.log(arrayOfInterviews)
 
     useEffect(() => {
 
