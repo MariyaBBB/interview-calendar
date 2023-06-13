@@ -6,6 +6,7 @@ const StyledButton = styled.button`
  bold: none;
  border: none;
  font-size: ${props => props.$medium ? '32px' : '50px'};
+ visibility: ${props => props.$isVisible ? 'visible': 'hidden'};
  background: none;
  font-weight: 300;
  cursor: pointer;

@@ -75,9 +75,19 @@ export const TimeTable = (props) => {
         setActive2(j);
         console.log(e);
     } 
+    const rootEl = useRef(null);
+
+    useEffect(() => {
+        const onClick = e => rootEl.current.contains(e.target) || 
+        setActive1(null);
+        setActive2(null);
+        document.addEventListener('click', onClick);
+        return () => document.removeEventListener('click', onClick);
+      }, []);
+
     return (
         <> 
-            <StyledTimeTable {...props}>{props.time.time.map((t, i) => (
+            <StyledTimeTable ref={rootEl} {...props}>{props.time.time.map((t, i) => (
                 <>
                 <StyledTime>{t}</StyledTime>
                 <StyledInterview>{arrayOfInterviews.map((el,j) => 
