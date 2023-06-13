@@ -3,15 +3,16 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button`
  color: red;
- font-size: 55px;
  bold: none;
  border: none;
- background: #FFFFFF;
+ font-size: ${props => props.$medium ? '32px' : '50px'};
+ background: none;
  font-weight: 300;
  cursor: pointer;
  justify-self: end;
 `
 export const Button = (props) => {
+    console.log(props)
     return(
         <StyledButton {...props}> 
         
