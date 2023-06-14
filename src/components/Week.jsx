@@ -142,8 +142,8 @@ export const Week = () => {
             {defaultProps.weekNames.map(name => <span className="week" key={name.id} >{name}</span>)} 
             {dates.map(date  => 
                 (isCurrentDay(date) ?
-                <CurrentDay className="dates" key={date.id}>{date}</CurrentDay> :
-                <StyledDates className="dates" key={date.id}>{date}</StyledDates> 
+                <CurrentDay className="dates" key={[date, date.id]}>{date}</CurrentDay> :
+                <StyledDates className="dates" key={[date, date.id]}>{date}</StyledDates> 
                 ))}
             
                 

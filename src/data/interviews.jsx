@@ -12,7 +12,9 @@ const array = new Array(7);
 for(let i = 0; i < 7; i++) {
     array[i] = new Array(13);
 }
-
+array[0][5] = true;
+array[1][8] = true;
+array[2][5] = true;
 export const arrayOfInterviews = array;
 
 export const AppContext = createContext('no context');
