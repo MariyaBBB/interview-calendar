@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from 'styled-components';
 import { Button } from "./Button";
 import moment from "moment";
-import { AppContext, arrayOfInterviews} from "../data/interviews";
+import { AppContext} from "../data/interviews";
 
 const StyledHeader = styled.div`
     display: grid;
@@ -28,19 +28,16 @@ export const Header = (props) => {
     const createInterview = () => {
     
         let res = prompt('Enter event time: YYYY-MM-DD HH:mm:ss');
-        console.log(res);
-        if(moment(res, "YYYY-MM-DD HH:mm:ss", true).isValid()) { 
+        if(moment(res, "YYYY-MM-DD HH:mm:ss", true).isValid() && moment(res).hour() >= 8 && moment(res).hour() <= 20) { 
             let i = moment(res).weekday();
             let j = moment(res).hour() - 8;
-            arrayOfInterviews[i][j] = 'event';
-            console.log(arrayOfInterviews);
-    
+            arrayOfInterviews[i][j] = true;    
         } else {
             alert("Fail");
         }
     }
     return(
-        <StyledHeader {...props}> 
+        <StyledHeader arrayOfInterviews={arrayOfInterviews} {...props}> 
             <StyledTitle>Interview calendar</StyledTitle>
             <Button onClick={createInterview} $isVisible={true}>+</Button>
         </StyledHeader>

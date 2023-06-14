@@ -2,13 +2,12 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import { Button } from "./Button";
 import { AppContext } from "../data/interviews";
+import moment from 'moment'; 
 
 const StyledTimeTable = styled.div`
     width: 740px;
     height: auto;
     background: #FFFFFF;
-    display: grid;
-    grid-template-columns: 70px auto;
     color: #C0C0C0;
     overflow: hidden;
     position: relative;
@@ -37,6 +36,10 @@ const StyledTime = styled.div`
     @media (max-width: 740px) {
         padding-left: 4px;
     }
+`
+const StyledTimaAndInterview = styled.div`
+    display: grid;
+    grid-template-columns: 70px auto;
 `
 
 const StyledEvent = styled.div`
@@ -70,13 +73,16 @@ const StyledButtons = styled.div`
 export const TimeTable = (props) => {
     const [active1, setActive1] = useState(null);
     const [active2, setActive2] = useState(null);
-    const getElem = (e, i, j) => {
+    const arrayOfInterviews = useContext(AppContext);
+
+
+    const getElem = (i, j) => {
         setActive1(i);
         setActive2(j);
-        console.log(arrayOfInterviews[j][i])
     } 
+
     const rootEl = useRef(null);
-    const arrayOfInterviews = useContext(AppContext);
+    
     useEffect(() => {
         const onClick = e => rootEl.current.contains(e.target) || 
         setActive1(null);
@@ -84,23 +90,46 @@ export const TimeTable = (props) => {
         document.addEventListener('click', onClick);
         return () => document.removeEventListener('click', onClick);
       }, []);
+
     const isEvent = (i, j) => {
         if(arrayOfInterviews[j][i]) return true;
         else return false;
     }
+
+    const deleteEvent = (i, j) => {
+        if(arrayOfInterviews[j][i]) {
+            arrayOfInterviews[j][i] = null;
+        }
+    }
+
+    const createEvent = () => {
+        
+        let res = prompt('Enter event time: HH');
+        if(moment(res, "HH", true).isValid() && res >= 8 && res <= 20) { 
+            let i = moment(new Date()).weekday();
+            let j = res - 8;
+            arrayOfInterviews[i][j] = true;    
+        } else {
+            alert("Fail");
+        }
+    }
+
     return (
         <> 
-            <StyledTimeTable ref={rootEl} {...props}>{props.time.time.map((t, i) => (
-                <>
-                <StyledTime key={[t, i]}>{t}</StyledTime>
-                <StyledInterview arrayOfInterviews={arrayOfInterviews}>{arrayOfInterviews.map((el, j) => 
-                        <StyledEvent key={[j, i]} onClick={(e) => getElem(e, i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={isEvent(i, j)}>{}
+            <StyledTimeTable arrayOfInterviews={arrayOfInterviews} ref={rootEl} {...props}>{props.time.time.map((t, i) => (
+                <StyledTimaAndInterview key={t}>
+                <StyledTime >{t}</StyledTime>
+                <StyledInterview>{arrayOfInterviews.map((el, j) => 
+                        <StyledEvent key={[el, i, j]} onClick={() => getElem(i, j)} $isActive={active1===i && active2 ===j } $backgroundColor={isEvent(i, j)}>{}
                         </StyledEvent>)}
                 </StyledInterview>
-                </>
+                </StyledTimaAndInterview>
                 ))}
             </StyledTimeTable>
-            <StyledButtons><Button $medium $isVisible={true}>Today</Button> <Button $medium $isVisible={active1 && isEvent(active1, active2)}>Delete</Button></StyledButtons>
+            <StyledButtons>
+                <Button onClick={() => createEvent()} $medium $isVisible={true}>Today</Button> 
+                <Button onClick={() => deleteEvent(active1, active2)} $medium $isVisible={active1 && isEvent(active1, active2)}>Delete</Button>
+            </StyledButtons>
         </>
     )
 }
