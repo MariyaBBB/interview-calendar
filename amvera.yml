@@ -1,8 +1,5 @@
 meta:
   environment: node
   toolchain:
-    name: npm
+    name: browser
     version: 18
-
-run:
-  scriptName: index.js
