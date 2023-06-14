@@ -13,7 +13,6 @@ const StyledButton = styled.button`
  justify-self: end;
 `
 export const Button = (props) => {
-    console.log(props)
     return(
         <StyledButton {...props}> 
         
